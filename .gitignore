@@ -1,2 +1,4 @@
+*.jsonl
+*.pyc
 .vscode
 venv/
