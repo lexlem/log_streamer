@@ -61,3 +61,9 @@
 docker build . -t log_streamer
 docker run -d -p 8000:8000 --name log_streamer log_streamer
 ```
+
+## How to run tests
+```shell
+export LOG_FILE_PATH=./logs.jsonl
+python log_streamer/manage.py test
+```
