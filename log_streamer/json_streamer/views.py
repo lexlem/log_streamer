@@ -57,7 +57,7 @@ class JSONStreamer(View):
                             "total_size": file_length,
                             "messages": [json.loads(jline) for jline in message.split('\n')]
                         }
-                except IOError:
+                except (IOError, OSError):
                     response_body = {"ok": False,
                                      "reason": EXCEPTIONS.get(FILE_NOT_FOUND)}
         except ValueError:
