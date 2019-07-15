@@ -8,6 +8,7 @@ EXPOSE 8000
 ENV SECRET_KEY=x#gbyh0+nv9kb1o=h%h97m3lyev1-ycw99%f!=gfj@!qtpbg0^
 
 # Supply your logs filename here
+# File should be located inside log_streamer project directory alongside json_streamer and log_streamer directories
 ENV LOG_FILE_PATH=./logs.jsonl
 
 WORKDIR /log_streamer
