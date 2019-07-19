@@ -13,14 +13,12 @@ def generate_test_jsonl(filename="logs.jsonl"):
             json.dump({"level": levels[index],
                        "message": messages[index]}, result)
             result.write('\n')
-        result.close()
 
 
 def file_lines_count(filename):
     with open(filename) as f:
         for i, l in enumerate(f):
             pass
-        f.seek(0)
     return i + 1
 
 
@@ -30,8 +28,8 @@ def read_file_by_chunks(filename, offset=0):
         if offset:
             in_file.seek(offset)
         piece = in_file.read(piece_size)
+        # TODO Add fallback in case message in piece is not finished
         closing_piece_position = piece.rfind(b'}') + 1
         result = piece[:closing_piece_position]
         next_offset = offset + closing_piece_position + 1 # We need to skip next \n char
-        in_file.close()
         return result, next_offset

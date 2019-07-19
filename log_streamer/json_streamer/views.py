@@ -32,7 +32,7 @@ class JSONStreamer(View):
     def post(self, request, *args, **kwargs):
         try:
             json_data = json.loads(request.body)
-            if json_data == {}:
+            if not json_data:
                 response_body = {"ok": False,
                                  "reason": EXCEPTIONS.get(OFFSET_NOT_SUPPLIED)}
             elif not isinstance(json_data.get("offset"), int):
